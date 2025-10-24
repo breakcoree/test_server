@@ -1,3 +1,14 @@
+fetch('/api/notes')
+    .then(res => res.json())
+    .then(data => {
+        print(data)
+        if (data && Array.isArray(data.data)) {
+            notes.splice(0, notes.length, ...data.data)
+            render()
+        }
+    })
+    .catch(err => print('Нас рано', err))
+
 // @region_fast_debug
 function print(aaa) {
     console.log(aaa)
@@ -60,6 +71,7 @@ function func_create_note(note_title, note_tag) {
     asd = {id: id_last, title: note_title, tag: note_tag, updateAt: new Date().toDateString()}
     notes.push(asd)
     render()
+    send_notes(asd)
 }
 
 
@@ -175,3 +187,21 @@ document.addEventListener('click', function(e) {
 })
 
 // @endregion_hooks
+
+// @region_async
+
+function send_notes(note) {
+    fetch('/api/notes', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(note),
+    }) 
+        .then(res => res.json())
+        .then(saved => {
+            print('test2')
+        })
+        .catch(err => print('ererererer'))
+}
+
+
+// @endregion_async
