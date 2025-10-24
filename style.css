@@ -1,6 +1,3 @@
-/* #95b806 - зеленый */
-/* #dbdbdb - серый фон */
-
 * {
     margin: 0;
     padding: 0;
@@ -25,7 +22,6 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-/* Левая панель */
 .left_bar {
     width: 300px;
     background: #f8f8f8;
@@ -86,7 +82,6 @@
     background: #f0f0f0;
 }
 
-/* Правая панель */
 .main_bar {
     flex: 1;
     padding: 20px;
